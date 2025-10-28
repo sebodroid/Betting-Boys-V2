@@ -8,6 +8,7 @@
     <SpaRoot>..\betting-boys-v2.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:51127</SpaProxyServerUrl>
+    <UserSecretsId>2c9936f3-8957-47bb-80ff-573d60c9a8b0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,10 @@
     <ProjectReference Include="..\betting-boys-v2.client\betting-boys-v2.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
