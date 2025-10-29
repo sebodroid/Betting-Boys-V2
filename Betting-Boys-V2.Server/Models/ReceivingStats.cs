@@ -6,9 +6,9 @@ namespace Betting_Boys_V2.Server.Models
     public class ReceivingStats
     {
             [Column("season")]
-            public int Season { get; set; }
+            public string? Season { get; set; }
             [Column("week")]
-            public int Week { get; set; }
+            public string? Week { get; set; }
             [Column("player_display_name")]
             public string? PlayerName { get; set; }
             [Column("player_position")]
@@ -16,24 +16,24 @@ namespace Betting_Boys_V2.Server.Models
             [Column("team_abbr")]
             public string? Team { get; set; }
             [Column("avg_cushion")]
-            public double? AvgCushion { get; set; }
+            public string? AvgCushion { get; set; }
             [Column("avg_separation")]
-            public double? AvgSeparation { get; set; }
+            public string? AvgSeparation { get; set; }
             [Column("receptions")]
-            public int Receptions{ get; set; }
+            public string? Receptions { get; set; }
             [Column("targets")]
-            public int Targets { get; set; }
+            public string? Targets { get; set; }
             [Column("catch_percentage")]
-            public double CatchPercent { get; set; }
+            public string? CatchPercent { get; set; }
             [Column("yards")]
-            public int Yards { get; set; }
+            public string? Yards { get; set; }
             [Column("rec_touchdowns")]
-            public int RecTDs { get; set; }
+            public string? RecTDs { get; set; }
             [Column("avg_yac")]
-            public double AvgYac{ get; set; }
+            public string? AvgYac { get; set; }
             [Column("player_gsis_id")]
             public string? PlayerId { get; set; }
             [Column("player_jersey_number")]
-            public int PlayerNumber { get; set; }
+            public string? PlayerNumber { get; set; }
         }
 }

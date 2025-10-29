@@ -1,30 +1,44 @@
-var builder = WebApplication.CreateBuilder(args);
+using System;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
+using Betting_Boys_V2.Server;
+using Betting_Boys_V2.Server.Repositories;
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Get the connection string
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+
+    // Register PostgreSQL DbContext
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(connectionString));
+
+    //Register the Repository
+    builder.Services.AddScoped<PassingRepository>();
+
+    // Register controllers
+    builder.Services.AddControllers();
+
+    // Allow frontend (React) to talk to backend (CORS)
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll", policy =>
+            policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+    });
+
+    var app = builder.Build();
+
+    app.UseCors("AllowAll");
+    app.MapControllers();
+
+    app.Run();
+}
+catch(Exception e)
+{
+    DateTime currentTime = DateTime.Now;
+    Console.WriteLine($"Error @{currentTime}" + e);
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.MapFallbackToFile("/index.html");
-
-app.Run();

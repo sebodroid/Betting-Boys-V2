@@ -6,40 +6,40 @@ namespace Betting_Boys_V2.Server.Models
     public class PassingStats
     {
         [Column("season")]
-        public int Season { get; set; }
+        public string? Season { get; set; }
         [Column("week")]
-        public int Week { get; set; }
+        public string? Week { get; set; }
         [Column("player_display_name")]
         public string? PlayerName { get; set; }
         [Column("team_abbr")]
         public string? Team{ get; set; }
         [Column("avg_time_to_throw")]
-        public double? AvgTimeToThrow { get; set; }
+        public string? AvgTimeToThrow { get; set; }
         [Column("avg_completed_air_yards")]
-        public double? AvgCompletedAirYards { get; set; }
+        public string? AvgCompletedAirYards { get; set; }
         [Column("max_completed_air_distance")]
-        public double? MaxCompAirDistance { get; set; }
-        [Column("attemps")]
-        public int Attempts { get; set; }
+        public string? MaxCompAirDistance { get; set; }
+        [Column("attempts")]
+        public string? Attempts { get; set; }
         [Column("pass_yards")]
-        public int PassYards { get; set; }
+        public string? PassYards { get; set; }
         [Column("pass_touchdowns")]
-        public int PassTDs { get; set; }
+        public string? PassTDs { get; set; }
         [Column("interceptions")]
-        public int Interceptions { get; set; }
+        public string? Interceptions { get; set; }
         [Column("passer_rating")]
-        public double PasserRating { get; set; }
+        public string? PasserRating { get; set; }
         [Column("completions")]
-        public int Completions { get; set; }
+        public string? Completions { get; set; }
         [Column("completion_percentage")]
-        public double CompletionPercent { get; set; }
+        public string? CompletionPercent { get; set; }
         [Column("avg_air_distance")]
-        public double AvgAirDistance { get; set; }
+        public string? AvgAirDistance { get; set; }
         [Column("max_air_distance")]
-        public double MaxAirDistance { get; set; }
+        public string? MaxAirDistance { get; set; }
         [Column("player_gsis_id")]
         public string? PlayerId { get; set; }
         [Column("player_jersey_number")]
-        public int PlayerNumber { get; set; }
+        public string? PlayerNumber { get; set; }
     }
 }
