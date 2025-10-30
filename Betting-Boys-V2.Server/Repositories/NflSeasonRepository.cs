@@ -17,6 +17,16 @@ namespace Betting_Boys_V2.Server.Repositories
         {
             return await _appDbContext.NflSchedule.ToListAsync();
         }
+        public async Task<List<NflSchedule>> GetGamesByWeek(string? week)
+        {
+            if (string.IsNullOrEmpty(week))
+            {
+                return await _appDbContext.NflSchedule.ToListAsync();
+            }
 
+            return await _appDbContext.NflSchedule
+                .Where(game => game.Week == week)
+                .ToListAsync();
+        }
     }
 }

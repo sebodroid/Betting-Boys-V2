@@ -15,9 +15,9 @@ namespace Betting_Boys_V2.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? week = null)
         {
-            var seasonGames = await _repo.GetAllGames();
+            var seasonGames = await _repo.GetGamesByWeek(week);
             return Ok(seasonGames);
         }
     }
