@@ -1,7 +1,8 @@
-@media (min-width: 1520px) {
-    .game-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+
+.game-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.5rem;
 }
 
 .page-wrapper {
