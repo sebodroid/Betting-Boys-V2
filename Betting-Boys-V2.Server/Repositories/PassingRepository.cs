@@ -1,5 +1,4 @@
-﻿using Betting_Boys_V2.Server;
-using Betting_Boys_V2.Server.Models;
+﻿using Betting_Boys_V2.Server.Models;
 using Microsoft.EntityFrameworkCore;
 namespace Betting_Boys_V2.Server.Repositories
 {

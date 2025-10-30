@@ -18,6 +18,10 @@ try
 
     //Register the Repository
     builder.Services.AddScoped<PassingRepository>();
+    builder.Services.AddScoped<RushingRepository>();
+    builder.Services.AddScoped<ReceivingRepository>();
+    builder.Services.AddScoped<NflSeasonRepository>();
+
 
     // Register controllers
     builder.Services.AddControllers();
