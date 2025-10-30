@@ -1,0 +1,9 @@
+@media (min-width: 1520px) {
+    .game-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.page-wrapper {
+    margin: 1rem 1.5rem;
+}

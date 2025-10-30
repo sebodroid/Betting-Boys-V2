@@ -1,0 +1,30 @@
+.game-card {
+    padding: .5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 300px;
+    background-color: #fff;
+}
+
+.game-card .game-date {
+    /* padding: .75rem 1rem .75rem; */
+    font-size: .65rem;
+}
+
+.game-card .team {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+.game-card .team img {
+    height: 24px;
+    width: 24px;
+}
+
+.game-card .team .team-name {
+    font-weight: 600;
+}
+
+.game-card .team .record {
+    font-size: .6rem;
+}
