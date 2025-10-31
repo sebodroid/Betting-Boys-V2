@@ -7,4 +7,6 @@
 
 .page-wrapper {
     margin: 1rem 1.5rem;
+    width: min(1950px, 95%);
+    margin-inline: auto;
 }
