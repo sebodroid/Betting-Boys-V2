@@ -20,5 +20,12 @@ namespace Betting_Boys_V2.Server.Controllers
             var seasonGames = await _repo.GetGamesByWeek(week);
             return Ok(seasonGames);
         }
+
+        [HttpGet("week")]
+        public IActionResult GetWeek()
+        {
+            string week = GetCurrentNFLWeek.GetWeek();
+            return Ok(new { week });
+        }
     }
 }
