@@ -8,26 +8,36 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [week, setWeek] = useState();
 
-    async function getCurrentWeek() {
-        const currentWeek = await axios.get("http://localhost:5146/api/NflSeason/week");
-        setWeek(currentWeek.data.week);
-    }
+    useEffect(() => {
+        const fetchCurrentWeek = async () => {
+            try {
+                const currentWeek = await axios.get("http://localhost:5146/api/NflSeason/week");
+                setWeek(currentWeek.data.week);
+            } catch (error) {
+                console.error("Error fetching current week:", error);
+            }
+        };
 
-  useEffect(() => {
-    const fetchNflData = async () => {
-        try {
-        getCurrentWeek();
-        const response = await axios.get(`http://localhost:5146/api/NflSeason?week=${week}`);
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching NflSeason data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+        fetchCurrentWeek();
+    }, []); // Empty dependency array ensures this runs only once on page load
 
-    fetchNflData();
-  }, [week]);
+    // Fetch NFL data whenever the week changes
+    useEffect(() => {
+        const fetchNflData = async () => {
+            if (week === undefined) return; // Ensure week is set before fetching data
+            try {
+                setLoading(true);
+                const response = await axios.get(`http://localhost:5146/api/NflSeason?week=${week}`);
+                    setData(response.data);
+            } catch (error) {
+                console.error("Error fetching NflSeason data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchNflData();
+    }, [week]);
   
   return (
     <div className="page-wrapper">
