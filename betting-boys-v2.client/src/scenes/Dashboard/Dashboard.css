@@ -10,3 +10,21 @@
     width: min(1950px, 95%);
     margin-inline: auto;
 }
+
+.get-week {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.get-week button {
+    background-color: #0064ff;
+    border: none;
+    color: #fff;
+    padding: .25rem .5rem;
+    cursor: pointer;
+}
+
+.get-week button:hover {
+    background-color: grey;
+}
