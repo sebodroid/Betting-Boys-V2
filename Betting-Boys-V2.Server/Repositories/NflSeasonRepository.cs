@@ -28,5 +28,10 @@ namespace Betting_Boys_V2.Server.Repositories
                 .Where(game => game.Week == week)
                 .ToListAsync();
         }
+
+        public async Task<List<Game>> GetGameProps(string? week)
+        {
+            return await _appDbContext.Game.Where(game => game.Week.Equals(week)).ToListAsync();
+        }
     }
 }
