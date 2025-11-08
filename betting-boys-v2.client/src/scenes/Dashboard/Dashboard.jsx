@@ -6,22 +6,38 @@ import axios from "axios";
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [week, setWeek] = useState(9);
+  const [week, setWeek] = useState();
 
-  useEffect(() => {
-    const fetchNflData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5146/api/NflSeason?week=${week}`);
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching NflSeason data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    useEffect(() => {
+        const fetchCurrentWeek = async () => {
+            try {
+                const currentWeek = await axios.get("http://localhost:5146/api/NflSeason/week");
+                setWeek(currentWeek.data.week);
+            } catch (error) {
+                console.error("Error fetching current week:", error);
+            }
+        };
 
-    fetchNflData();
-  }, [week]);
+        fetchCurrentWeek();
+    }, []); // Empty dependency array ensures this runs only once on page load
+
+    // Fetch NFL data whenever the week changes
+    useEffect(() => {
+        const fetchNflData = async () => {
+            if (week === undefined) return; // Ensure week is set before fetching data
+            try {
+                setLoading(true);
+                const response = await axios.get(`http://localhost:5146/api/NflSeason?week=${week}`);
+                    setData(response.data);
+            } catch (error) {
+                console.error("Error fetching NflSeason data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchNflData();
+    }, [week]);
   
   return (
     <div className="page-wrapper">
@@ -35,11 +51,11 @@ const Dashboard = () => {
         )}
       </div>
       <div className="get-week">
-        <button onClick={() => setWeek(1)} aria-label="go to week 1">«1</button>
-        <button onClick={() => setWeek(prev => Math.max(1, prev - 1))} aria-label="previous week">‹</button>
+        <button onClick={() => setWeek(1)} aria-label="go to week 1">�1</button>
+        <button onClick={() => setWeek(prev => Math.max(1, prev - 1))} aria-label="previous week">�</button>
         <span className="current-week">{week}</span>
-        <button onClick={() => setWeek(prev => Math.min(17, prev + 1))} aria-label="next week">›</button>
-        <button onClick={() => setWeek(17)} aria-label="go to week 17">17»</button>
+        <button onClick={() => setWeek(prev => Math.min(17, prev + 1))} aria-label="next week">�</button>
+        <button onClick={() => setWeek(17)} aria-label="go to week 17">17�</button>
       </div>
     </div>
   )

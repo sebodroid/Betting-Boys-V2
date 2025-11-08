@@ -11,8 +11,9 @@ namespace Betting_Boys_V2.Server
         public DbSet<PassingStats> PassingStats { get; set; }
         public DbSet<ReceivingStats> ReceivingStats { get; set; }
         public DbSet<RushingStats> RushingStats { get; set; }
-
         public DbSet<NflSchedule> NflSchedule { get; set; }
+        public DbSet<Game> Game { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +28,9 @@ namespace Betting_Boys_V2.Server
 
             modelBuilder.Entity<NflSchedule>()
                 .HasKey(p => new { p.GameId });
+
+            modelBuilder.Entity<Game>()
+                .HasKey(p => new { p.Id });
 
         }
     }
